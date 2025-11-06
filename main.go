@@ -12,12 +12,11 @@ import (
 func main() {
 	fmt.Println("开始")
 	// https://www.biquge345.com/book/953622/
-	doc, err := htmlquery.LoadURL("https://www.biquge345.com/book/953622/")
+	url := "https://www.biquge345.com/book/229622/"
+	doc, err := htmlquery.LoadURL(url)
 	if err != nil {
 		panic(err)
 	}
-	// 打印 html
-	// fmt.Println(htmlquery.OutputHTML(doc, true))
 	// 获取标题
 	title := htmlquery.InnerText(htmlquery.FindOne(doc, "//h1"))
 
@@ -34,7 +33,7 @@ func main() {
 	// }
 	// 跳过前 60
 	time.Sleep(1 * time.Second)
-	list = list[60:]
+	list = list[70:]
 	prefix := "https://www.biquge345.com"
 	for index, node := range list {
 		url := prefix + htmlquery.SelectAttr(node, "href")
